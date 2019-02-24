@@ -38,7 +38,7 @@ public class LoanDriver {
         double myRate = input.nextDouble();
         System.out.println("And finally, for how many years did you finance? ");
         int myYears = input.nextInt();
-        //use setter method to create user's current loan
+        //use setter method to set user's current loan correctly
         myLoan.setLoan(myRate, myYears, myAmount);
         System.out.println("Thank you for that. Let's begin creating our loans now.");
         System.out.println();
