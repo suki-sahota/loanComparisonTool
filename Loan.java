@@ -3,26 +3,26 @@
  * Description: Simple Loan OOP Practice
  */
 public class Loan {
-    //instance variables
+    // Instance variables
     private double rate = 0;
     private int years = 0;
     private double amount = 0;
     
-    //constructor
+    // Three-argument constructor
     public Loan(double rate, int years, double amount) {
         this.rate = rate;
         this.years = years;
         this.amount = amount;
     }
 
-    //no-argument constructor
+    // No-argument constructor
     public Loan() {
         rate = 0;
         years = 1;
         amount = 0;
     }
     
-    //setter
+    // Setter
     public void setLoan(double rate, int years, double amount) {
         if (rate > 0) {
             this.rate = rate;
@@ -45,7 +45,7 @@ public class Loan {
         }
     }
     
-    //getter
+    // Getter
     public double getRate() {
         return rate;
     }
@@ -74,14 +74,14 @@ public class Loan {
         return amount * ((rate / 1200) / (1 - (1 / Math.pow(1 + (rate / 1200), years * 12))) * years * 12) - amount;
     }
     
-    //equals check
+    // Equals check
     public boolean equals(Loan otherLoan) {
         return this.rate == otherLoan.rate &&
                this.years == otherLoan.years &&
                this.amount == otherLoan.amount;
     }
     
-    //to string
+    // To string
     public String toString() {
         String s = "";
         s = s + "Amount: $" + this.amount;

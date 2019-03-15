@@ -8,7 +8,7 @@ public class LoanDriver {
         Scanner input = new Scanner(System.in);
         System.out.println();
 
-        //prompt user for their name
+        // Prompt user for their name
         System.out.print("Hello, what might your name be stranger? ");
         String userName = input.nextLine();
         System.out.print(userName + ", welcome to the simple loan program. This is where you can come to compare your current loan to loans of different structure. I understand you'd like to create some loans and shop around. How many loans would you like to create today? ");
@@ -18,18 +18,18 @@ public class LoanDriver {
                 numberOfLoans = input.nextInt();
                 break;
             } else {
-                System.out.println("I'm sorry, but the input you provided was not valid. Please enter a natural number (a positive integer).");
-                //flush the buffer from the Scanner
+                System.out.println("I'm sorry, but the input you provided was not valid. Please enter a natural number (a positive integer). ");
+                // Flush the buffer from the Scanner
                 input.next();
             }
         }
-        //create (loan object type) array of size numberOfLoans
+        // Create (loan object type) array of size numberOfLoans
         Loan[] loans = new Loan[Math.abs(numberOfLoans)];
-        //construct user's current loan with no parameters
+        // Construct user's current loan with no parameters
         Loan myLoan = new Loan();
         System.out.println();
 
-        //prompt user for loan information and then use setter method to set current loan information
+        // Prompt user for loan information and then use setter method to set current loan information
         System.out.println("Before we begin, please enter your current loan information so we can compare later.");
         System.out.print("How much money did you borrow on the loan you have now? ");
         double myAmount = input.nextDouble();
@@ -37,18 +37,18 @@ public class LoanDriver {
         double myRate = input.nextDouble();
         System.out.print("And finally, for how many years did you finance? ");
         int myYears = input.nextInt();
-        //use setter method to set user's current loan correctly
+        // Use setter method to set user's current loan correctly
         myLoan.setLoan(myRate, myYears, myAmount);
         System.out.println("Thank you for that. Let's begin creating our loans now.");
         System.out.println();
         
-        //populate loans array with Loan objects
+        // Populate loans array with Loan objects
         population(loans, input);
         System.out.println();
         
-        //check to see if any of the loans entered are the same
+        // Check to see if any of the loans entered are the same
         isUnique(loans);
-        //show alert if any of the loans entered match the user's current loan
+        // Show alert if any of the loans entered match the user's current loan
         int j = 0;
         for(Loan loan : loans) {
             j++;
@@ -58,7 +58,7 @@ public class LoanDriver {
         }
         System.out.println();
 
-        //summarize the loan information from the array loans
+        // Summarize the loan information from the array loans
         double currentMonthlyPayment = myLoan.getMonthlyPayment();
         int loansLength = loans.length;
         int[] similar = quickSummary(loans, currentMonthlyPayment, loansLength);
@@ -68,7 +68,7 @@ public class LoanDriver {
                 System.out.println("It looks like Loan " + (i + 1) + " has a similar monthly payment as your current loan.");
             }
         }
-        //prompt user to see if they would like more information on a particular loan
+        // Prompt user to see if they would like more information on a particular loan
         System.out.print("If you would like a particular loan's full information, please type the integer value that corresponds to that loan now or press 0 to exit: ");
         int loanOfInterest = input.nextInt();
         if (loanOfInterest > 0 && loanOfInterest <= loansLength) {
@@ -76,13 +76,13 @@ public class LoanDriver {
             System.out.println(loans[loanOfInterest].toString());
         }
 
-        //exit message
+        // Exit message
         System.out.println();
         System.out.println("Thank you for stopping by " + userName + ", goodbye now.");
     }
 
 
-    //method to populate loans based off of user input
+    // Method to populate loans based off of user input
     public static void population(Loan[] loans, Scanner input) {
         double a, r;
         int y;
@@ -93,14 +93,14 @@ public class LoanDriver {
             r = input.nextDouble();
             System.out.print("Enter the number of years for loan " + (i + 1) + ": ");
             y = input.nextInt();
-            //create a loan object
+            // Create a loan object
             loans[i] = new Loan(r, y, a);
             System.out.println();
             System.out.println();
         }
     }
 
-    //method to display quick summary of monthly debt service
+    // Method to display quick summary of monthly debt service
     public static int[] quickSummary(Loan[] loans, double currentMonthlyPayment, int loansLength) {
         int[] similar = new int[loansLength];
         double monthlyPayment, monthlyInterestExpense;
@@ -118,7 +118,7 @@ public class LoanDriver {
         return similar;
     }
     
-    //method to check uniqueness of loans
+    // Method to check uniqueness of loans
     public static void isUnique(Loan[] loans) {
         boolean comp = false;
         outerloop:
